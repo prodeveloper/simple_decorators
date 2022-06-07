@@ -1,4 +1,4 @@
-from functools import update_wrapper
+from functools import update_wrapper, lru_cache
 
 class Count:
     '''Counts the number of times a function is called'''
@@ -14,6 +14,7 @@ class Count:
 
 
 @Count
+@lru_cache(maxsize=None)
 def fib(n):
     '''Generates the nth fibonacci number'''
     if n == 0:
@@ -24,4 +25,4 @@ def fib(n):
 
 
 if __name__ == '__main__':
-    print(fib(10))
+    print(fib(20))
